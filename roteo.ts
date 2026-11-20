@@ -12,7 +12,7 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 
 export const PROVIDER_ID = "roteo-claude";
-export const VERSION = "0.1.0"; // keep equal to package.json `version`
+export const VERSION = "0.1.1"; // keep equal to package.json `version`
 export const KEY_ENV = "ROTEO_API_KEY";
 export const URL_ENV = "ROTEO_BASE_URL";
 export const DEFAULT_BASE_URL = "https://api.roteo.ai";
@@ -83,6 +83,11 @@ export function childEnv(key: string): Record<string, string | undefined> {
     ANTHROPIC_BASE_URL: baseUrl(),
     ANTHROPIC_AUTH_TOKEN: key,
     ANTHROPIC_CUSTOM_HEADERS: `${CLIENT_HEADER}: omp-roteo/${VERSION}`,
+    // Claude Code names its caller on every request (user-agent and billing
+    // block). The Agent SDK would say `sdk-ts`; this child names omp-roteo
+    // instead, its own honest name, also when omp starts inside another Claude
+    // Code that set the variable for its own children.
+    CLAUDE_CODE_ENTRYPOINT: "omp-roteo",
     CLAUDE_CONFIG_DIR: claudeConfigDir(),
     // Claude Code's telemetry, error reports, auto-updater and feedback stay off.
     CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1",

@@ -1,6 +1,6 @@
 {
   "name": "omp-plugin-roteo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Claude models in oh-my-pi (omp) through Roteo, run by the official Claude Code.",
   "license": "MIT",
   "type": "module",

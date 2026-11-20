@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 (2026-11-20)
+
+### Changed
+- Claude Code now names its caller `omp-roteo` on every request, in place of the Agent SDK's default `sdk-ts`, also when omp runs inside another Claude Code.
+
 ## 0.1.0 (2026-11-13)
 
 First release of the Roteo fork of omp-claude-bridge.
